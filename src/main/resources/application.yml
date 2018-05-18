@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:   
+  datasource:
+    druid:
+      url: jdbc:db2://localhost:50000/DEMO1:currentSchema=S1;
+      username: DB2INST1
+      password: db2pwd123      
+      driver-class-name: com.ibm.db2.jcc.DB2Driver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1 from sysibm.sysdummy1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+
+mybatis:
+  mapper-locations: classpath*:mybatis-mapper/**/*.xml
+  #config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.huxm.demo.demo1.entity.auto
+  
+  
