@@ -19,7 +19,11 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 
+
 //upate in master
+
+//初始化注入
+
 @Configuration
 public class AppConfig {
 	@Autowired
