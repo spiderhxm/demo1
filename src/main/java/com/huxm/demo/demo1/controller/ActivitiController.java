@@ -3,8 +3,10 @@ package com.huxm.demo.demo1.controller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.activiti.engine.RepositoryService;
+import org.activiti.engine.repository.Deployment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +39,7 @@ public class ActivitiController {
 		repositoryService.createDeployment().addClasspathResource("activiti-workflow/" + bpmn).deploy();
 
 		rr.setContent("bmpn number = " + repositoryService.createDeploymentQuery().count());
+		List<Deployment> dList = repositoryService.createDeploymentQuery().list();
 
 		return rr;
 	}

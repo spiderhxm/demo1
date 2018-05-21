@@ -22,7 +22,7 @@ public class UserController {
 	public RestResponse addUser(@RequestParam(value="name", defaultValue = "shawn") String name,@RequestParam(value="group", defaultValue = "1") Integer group) {
 		
 		User user = new User();
-		user.setGroup(group);
+		user.setGroupid(group);
 		user.setName(name);
 		userService.add(user);
 		

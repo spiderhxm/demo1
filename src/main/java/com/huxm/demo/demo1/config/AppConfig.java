@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -50,5 +51,10 @@ public class AppConfig {
 	@Bean
 	public RuntimeService runtimeService() throws Exception {
 		return processEngine().getRuntimeService();
+	}
+	
+	@Bean
+	public TaskService taskService() throws Exception {
+		return processEngine().getTaskService();
 	}
 }

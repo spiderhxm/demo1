@@ -3,17 +3,17 @@
   <process id="request_process" name="请求处理流程" isExecutable="true">
     <startEvent id="startevent1" name="Start"></startEvent>
     <endEvent id="endevent1" name="End"></endEvent>
-    <userTask id="hadle-request" name="处理申请"></userTask>
-    <userTask id="adj-request" name="调整申请"></userTask>
+    <userTask id="hadle-request" name="处理申请" activiti:candidateGroups="2" activiti:formKey="request-handle"></userTask>
+    <userTask id="adj-request" name="调整申请" activiti:assignee="${creatorId}"></userTask>
     <serviceTask id="update-status-suc" name="修改成功状态" activiti:delegateExpression="${upateStatusSuccess}"></serviceTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="hadle-request"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow5" sourceRef="hadle-request" targetRef="exclusivegateway1"></sequenceFlow>
     <sequenceFlow id="req-approve" name="批准" sourceRef="exclusivegateway1" targetRef="update-status-suc">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${request.getStatus()=='approved'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${status=='approved'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="req-reject" name="拒绝" sourceRef="exclusivegateway1" targetRef="adj-request">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${request.getStatus()=='rejected'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${status=='rejected'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="adj-request" targetRef="hadle-request"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="update-status-suc" targetRef="endevent1"></sequenceFlow>
@@ -50,14 +50,14 @@
         <omgdi:waypoint x="520.0" y="307.0"></omgdi:waypoint>
         <omgdi:waypoint x="580.0" y="307.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="14.0" width="24.0" x="520.0" y="307.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="100.0" x="520.0" y="307.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="req-reject" id="BPMNEdge_req-reject">
         <omgdi:waypoint x="500.0" y="327.0"></omgdi:waypoint>
         <omgdi:waypoint x="428.0" y="404.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="14.0" width="24.0" x="500.0" y="327.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="100.0" x="500.0" y="327.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
