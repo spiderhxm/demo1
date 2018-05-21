@@ -18,6 +18,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
+
+//upate in master
 @Configuration
 public class AppConfig {
 	@Autowired
