@@ -132,4 +132,12 @@ public class Request {
     public void setStatus(String status) {
         this.status = status;
     }
+
+	@Override
+	public String toString() {
+		return "Request [id=" + id + ", creatorid=" + creatorid + ", reviewerid=" + reviewerid + ", status=" + status
+				+ "]";
+	}
+    
+    
 }

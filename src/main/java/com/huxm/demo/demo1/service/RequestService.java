@@ -1,12 +1,14 @@
 package com.huxm.demo.demo1.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.RuntimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.huxm.demo.demo1.dao.auto.RequestDao;
 import com.huxm.demo.demo1.dao.auto.RequestMapper;
 import com.huxm.demo.demo1.dao.auto.UserMapper;
 import com.huxm.demo.demo1.entity.auto.Request;
@@ -19,6 +21,9 @@ public class RequestService {
 	
 	@Autowired
 	RequestMapper requestMapper;
+	
+	@Autowired
+	RequestDao requestDao;
 	
 	@Autowired
 	RuntimeService runtimeService;
@@ -64,6 +69,10 @@ public class RequestService {
 	public void save(Request req) {
 		requestMapper.updateByPrimaryKey(req);
 		
+	}
+	
+	public List<Request> listAll(){
+		return requestDao.listAll();
 	}
 	
 

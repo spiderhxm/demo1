@@ -1,6 +1,8 @@
 package com.huxm.demo.demo1.controller;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.RuntimeService;
@@ -24,6 +26,8 @@ public class RequestController {
 
 	@Autowired
 	RequestService requestService;
+	
+	
 	
 	@ResponseBody
 	@RequestMapping("/add")
@@ -50,6 +54,25 @@ public class RequestController {
 
 		log.info("a new request added");
 		
+		
+		return rr;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping("/listAll")
+	public RestResponse listAll() {
+		
+		RestResponse rr = new RestResponse();
+		rr.setReturnCode("0000");	
+		//List<String> strList = new LinkedList<String>();
+		
+		List<Request> reqList = requestService.listAll(); 
+		//for(Request req: reqList) {
+		//	strList.add(req.toString());
+		//}
+		
+		rr.setContent(reqList.toString());
 		
 		return rr;
 		
