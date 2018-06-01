@@ -8,7 +8,7 @@ import org.activiti.engine.RuntimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.huxm.demo.demo1.dao.auto.RequestDao;
+import com.huxm.demo.demo1.dao.auto.RequestDAO;
 import com.huxm.demo.demo1.dao.auto.RequestMapper;
 import com.huxm.demo.demo1.dao.auto.UserMapper;
 import com.huxm.demo.demo1.entity.auto.Request;
@@ -23,7 +23,7 @@ public class RequestService {
 	RequestMapper requestMapper;
 	
 	@Autowired
-	RequestDao requestDao;
+	RequestDAO requestDao;
 	
 	@Autowired
 	RuntimeService runtimeService;

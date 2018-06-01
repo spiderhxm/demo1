@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.huxm.demo.demo1.entity.auto.Request;
 
 @Component
-public class RequestDao {
+public class RequestDAO {
 	
 	@Autowired
 	SqlSession sqlSession;

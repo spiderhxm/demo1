@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -25,6 +26,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 //初始化注入
 
 @Configuration
+@ImportResource("classpath*:context/dubbo-cusumer-context.xml")
 public class AppConfig {
 	@Autowired
 	private DataSource dataSource;	
